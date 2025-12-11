@@ -29,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     // Cargamos el menú
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
+        supportActionBar?.title = ""
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         return true
     }
 
