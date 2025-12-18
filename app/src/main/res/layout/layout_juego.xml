@@ -1,58 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutJuego"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="24dp"
+    android:paddingTop="48dp">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
+    <!-- PREGUNTA -->
+    <TextView
+        android:id="@+id/preguntaJuego"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:text="Pregunta"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
-        <TextView
-            android:id="@+id/preguntaJuego"
+    <!-- RESPUESTAS -->
+    <RadioGroup
+        android:id="@+id/respuestas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
+
+        <RadioButton
+            android:id="@+id/respuesta1Juego"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pregunta"
-            android:textSize="18sp"/>
+            android:text="Respuesta 1"/>
 
-        <RadioGroup
-            android:id="@+id/respuestas"
+        <RadioButton
+            android:id="@+id/respuesta2Juego"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="8dp">
+            android:text="Respuesta 2"/>
 
-            <RadioButton
-                android:id="@+id/respuesta1Juego"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Respuesta 1"/>
-
-            <RadioButton
-                android:id="@+id/respuesta2Juego"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Respuesta 2"/>
-
-            <RadioButton
-                android:id="@+id/respuesta3Juego"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Respuesta 3"/>
-
-            <RadioButton
-                android:id="@+id/respuesta4Juego"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Respuesta 4"/>
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/continuarJuego"
+        <RadioButton
+            android:id="@+id/respuesta3Juego"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Continuar"
-            android:layout_marginTop="16dp"/>
-    </LinearLayout>
-</ScrollView>
+            android:text="Respuesta 3"/>
+
+        <RadioButton
+            android:id="@+id/respuesta4Juego"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Respuesta 4"/>
+    </RadioGroup>
+
+    <!-- BOTÓN CONTINUAR -->
+    <Button
+        android:id="@+id/continuarJuego"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Continuar"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>
