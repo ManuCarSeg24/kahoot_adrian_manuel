@@ -8,11 +8,11 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 
 class Resultado : Fragment(R.layout.resultados) {
-
     private var aciertos: Int = 0
     private var fallos: Int = 0
 
     companion object {
+        // Método estático para crear un fragment con parámetros
         fun newInstance(aciertos: Int, fallos: Int): Resultado {
             val fragment = Resultado()
             val args = Bundle()
@@ -23,46 +23,35 @@ class Resultado : Fragment(R.layout.resultados) {
         }
     }
 
-    // 👇 AQUÍ VA (NO dentro de onViewCreated)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+        // Indicamos que este fragment no necesita menú (elimina los puntitos)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Recoger datos
+        // Recuperamos los datos enviados desde Juego
         arguments?.let {
             aciertos = it.getInt("aciertos")
             fallos = it.getInt("fallos")
         }
 
-        // Mostrar resultados
-        view.findViewById<TextView>(R.id.totalPreguntas).text =
-            "Total preguntas: ${aciertos + fallos}"
-        view.findViewById<TextView>(R.id.aciertos).text =
-            "Aciertos: $aciertos"
-        view.findViewById<TextView>(R.id.fallos).text =
-            "Fallos: $fallos"
+        // Mostramos los resultados en la UI
+        view.findViewById<TextView>(R.id.totalPreguntas).text = "Total preguntas: ${aciertos + fallos}"
+        view.findViewById<TextView>(R.id.aciertos).text = "Aciertos: $aciertos"
+        view.findViewById<TextView>(R.id.fallos).text = "Fallos: $fallos"
 
-        // BOTÓN VOLVER AL MENÚ
+        // Botón para volver al menú principal
         view.findViewById<Button>(R.id.btnVolverMenu).setOnClickListener {
-
-            parentFragmentManager.beginTransaction()
-                .remove(this)
-                .commit()
-
-            requireActivity()
-                .findViewById<TextView>(R.id.tituloKahoot)
-                .visibility = View.VISIBLE
-
-            requireActivity()
-                .findViewById<View>(R.id.fragmentContainer)
-                .visibility = View.GONE
+            parentFragmentManager.beginTransaction().remove(this).commit()
+            requireActivity().findViewById<TextView>(R.id.tituloKahoot).visibility = View.VISIBLE
+            requireActivity().findViewById<View>(R.id.fragmentContainer).visibility = View.GONE
         }
     }
+
     override fun onPrepareOptionsMenu(menu: Menu) {
-        menu.clear()   // elimina los puntitos
+        menu.clear() // Eliminamos el menú superior para que no aparezcan opciones innecesarias
     }
 }

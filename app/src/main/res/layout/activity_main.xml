@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#673AB7">
+    <!-- Fondo morado principal -->
 
     <!-- TOOLBAR -->
     <androidx.appcompat.widget.Toolbar
@@ -16,6 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- Barra superior para menú "Jugar / Configuración" -->
 
     <!-- TEXTO KAHOOT -->
     <TextView
@@ -30,6 +32,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- Texto grande y centrado de la pantalla principal -->
 
     <!-- CONTENEDOR DE FRAGMENTS -->
     <FrameLayout
@@ -41,5 +44,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+    <!-- Contenedor invisible que se usa para cargar dinámicamente los fragments de juego y configuración -->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

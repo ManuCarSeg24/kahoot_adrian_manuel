@@ -6,10 +6,10 @@ import android.database.sqlite.SQLiteOpenHelper
 import com.example.kahoot_adrian_manuel.model.Pregunta
 import com.example.kahoot_adrian_manuel.model.Respuesta
 
-class SQLiteHelper(context: Context) :
-    SQLiteOpenHelper(context, "kahoot.db", null, 1) {
+class SQLiteHelper(context: Context) : SQLiteOpenHelper(context, "kahoot.db", null, 1) {
 
     override fun onCreate(db: SQLiteDatabase) {
+        // Creamos la tabla de preguntas
         db.execSQL("""
             CREATE TABLE preguntas (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -17,6 +17,7 @@ class SQLiteHelper(context: Context) :
             )
         """)
 
+        // Creamos la tabla de respuestas, vinculando cada respuesta a una pregunta
         db.execSQL("""
             CREATE TABLE respuestas (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -28,24 +29,20 @@ class SQLiteHelper(context: Context) :
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
+        // Borramos tablas antiguas y las recreamos
         db.execSQL("DROP TABLE IF EXISTS respuestas")
         db.execSQL("DROP TABLE IF EXISTS preguntas")
         onCreate(db)
     }
 
-    fun insertarPreguntaConRespuestas(
-        pregunta: String,
-        respuestas: List<String>,
-        correcta: Int
-    ): Boolean {
+    fun insertarPreguntaConRespuestas(pregunta: String, respuestas: List<String>, correcta: Int): Boolean {
         val db = writableDatabase
-        db.beginTransaction()
+        db.beginTransaction() // Comenzamos transacción para mantener integridad
         return try {
-            val stmt = db.compileStatement(
-                "INSERT INTO preguntas (texto) VALUES (?)"
-            )
+            val stmt = db.compileStatement("INSERT INTO preguntas (texto) VALUES (?)")
             stmt.bindString(1, pregunta)
             val idPregunta = stmt.executeInsert()
+            // Guardamos la pregunta y obtenemos su ID para asociar las respuestas
 
             respuestas.forEachIndexed { i, texto ->
                 val st = db.compileStatement(
@@ -54,13 +51,14 @@ class SQLiteHelper(context: Context) :
                 st.bindLong(1, idPregunta)
                 st.bindString(2, texto)
                 st.bindLong(3, if (i + 1 == correcta) 1 else 0)
+                // Marcamos la respuesta correcta según el índice
                 st.executeInsert()
             }
 
             db.setTransactionSuccessful()
-            true
+            true // Si todo sale bien, devolvemos true
         } catch (e: Exception) {
-            false
+            false // Si ocurre un error, devolvemos false
         } finally {
             db.endTransaction()
             db.close()
@@ -81,34 +79,21 @@ class SQLiteHelper(context: Context) :
         val lista = mutableListOf<Pregunta>()
         val db = readableDatabase
 
-        val c = db.rawQuery(
-            "SELECT id, texto FROM preguntas ORDER BY RANDOM() LIMIT 5",
-            null
-        )
-
+        // Seleccionamos aleatoriamente 5 preguntas
+        val c = db.rawQuery("SELECT id, texto FROM preguntas ORDER BY RANDOM() LIMIT 5", null)
         while (c.moveToNext()) {
             val id = c.getLong(0)
             val texto = c.getString(1)
 
             val respuestas = mutableListOf<Respuesta>()
-            val cr = db.rawQuery(
-                "SELECT texto, es_correcta FROM respuestas WHERE id_pregunta = ?",
-                arrayOf(id.toString())
-            )
-
+            val cr = db.rawQuery("SELECT texto, es_correcta FROM respuestas WHERE id_pregunta = ?", arrayOf(id.toString()))
             while (cr.moveToNext()) {
-                respuestas.add(
-                    Respuesta(
-                        cr.getString(0),
-                        cr.getInt(1) == 1
-                    )
-                )
+                respuestas.add(Respuesta(cr.getString(0), cr.getInt(1) == 1))
             }
             cr.close()
 
             lista.add(Pregunta(id, texto, respuestas))
         }
-
         c.close()
         db.close()
         return lista
