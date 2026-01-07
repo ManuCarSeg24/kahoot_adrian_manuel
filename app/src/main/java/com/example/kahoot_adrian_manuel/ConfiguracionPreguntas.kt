@@ -29,6 +29,9 @@ class ConfiguracionPreguntas : Fragment() {
 
         val btnGuardar = view.findViewById<Button>(R.id.guardarPregunta)
 
+        // 👉 🔹 AQUÍ VA EL BOTÓN VOLVER (JUSTO AQUÍ)
+        val btnVolverMenu = view.findViewById<Button>(R.id.btnVolverMenuConfig)
+
         val db = SQLiteHelper(requireContext())
 
         // Forzar solo una respuesta correcta
@@ -88,6 +91,20 @@ class ConfiguracionPreguntas : Fragment() {
                 etR4.text.clear()
                 radios.forEach { it.isChecked = false }
             }
+        }
+        btnVolverMenu.setOnClickListener {
+
+            parentFragmentManager.beginTransaction()
+                .remove(this)
+                .commit()
+
+            requireActivity()
+                .findViewById<TextView>(R.id.tituloKahoot)
+                .visibility = View.VISIBLE
+
+            requireActivity()
+                .findViewById<View>(R.id.fragmentContainer)
+                .visibility = View.GONE
         }
 
         return view

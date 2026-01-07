@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
 
             R.id.menu_configuracion -> {
-                // 🔧 CORRECCIÓN: ocultamos KAHOOT y mostramos fragment
+                //Ocultamos KAHOOT y mostramos fragment
                 titulo.visibility = View.GONE
                 container.visibility = View.VISIBLE
 
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.menu_jugar -> {
-                // 🔧 CORRECCIÓN: ocultamos KAHOOT y mostramos fragment
+                // Ocultamos KAHOOT y mostramos fragment
                 titulo.visibility = View.GONE
                 container.visibility = View.VISIBLE
 

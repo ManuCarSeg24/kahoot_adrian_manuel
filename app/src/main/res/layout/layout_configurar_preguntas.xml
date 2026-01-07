@@ -14,7 +14,8 @@
         android:id="@+id/preguntaConfiguracion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Escribe la pregunta"/>
+        android:hint="Escribe la pregunta"
+        android:textColor="#673AB7"/>
 
     <!-- RESPUESTA 1 -->
     <LinearLayout
@@ -34,7 +35,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Respuesta 1"/>
+            android:hint="Respuesta 1"
+            android:textColor="#673AB7"/>
     </LinearLayout>
 
     <!-- RESPUESTA 2 -->
@@ -55,7 +57,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Respuesta 2"/>
+            android:hint="Respuesta 2"
+            android:textColor="#673AB7"/>
     </LinearLayout>
 
     <!-- RESPUESTA 3 -->
@@ -76,7 +79,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Respuesta 3"/>
+            android:hint="Respuesta 3"
+            android:textColor="#673AB7"/>
     </LinearLayout>
 
     <!-- RESPUESTA 4 -->
@@ -97,7 +101,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Respuesta 4"/>
+            android:hint="Respuesta 4"
+            android:textColor="#673AB7"/>
     </LinearLayout>
 
     <!-- BOTÓN GUARDAR -->
@@ -107,7 +112,16 @@
         android:layout_height="wrap_content"
         android:text="Guardar"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#FFFFFF"
-        android:textColor="#673AB7"/>
+        android:backgroundTint="#673AB7"
+        android:textColor="#FFFFFF"/>
+
+    <!-- BOTÓN VOLVER AL MENU -->
+    <Button
+        android:id="@+id/btnVolverMenuConfig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver al menú"
+        android:backgroundTint="#673AB7"
+        android:textColor="#FFFFFF"/>
 
 </LinearLayout>

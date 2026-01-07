@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total preguntas: 5"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:layout_marginBottom="8dp"/>
 
@@ -20,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aciertos: 0"
+        android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:layout_marginBottom="8dp"/>
 
@@ -28,5 +30,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Fallos: 0"
-        android:textSize="18sp"/>
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnVolverMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Volver al menú"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#673AB7"/>
 </LinearLayout>

@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:text="Pregunta"
         android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="#673AB7"/>
 
     <!-- RESPUESTAS -->
     <RadioGroup
@@ -30,25 +31,29 @@
             android:id="@+id/respuesta1Juego"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Respuesta 1"/>
+            android:text="Respuesta 1"
+            android:textColor="#673AB7"/>
 
         <RadioButton
             android:id="@+id/respuesta2Juego"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Respuesta 2"/>
+            android:text="Respuesta 2"
+            android:textColor="#673AB7"/>
 
         <RadioButton
             android:id="@+id/respuesta3Juego"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Respuesta 3"/>
+            android:text="Respuesta 3"
+            android:textColor="#673AB7"/>
 
         <RadioButton
             android:id="@+id/respuesta4Juego"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Respuesta 4"/>
+            android:text="Respuesta 4"
+            android:textColor="#673AB7"/>
     </RadioGroup>
 
     <!-- BOTÓN CONTINUAR -->
@@ -58,5 +63,15 @@
         android:layout_height="wrap_content"
         android:text="Continuar"
         android:layout_marginTop="16dp"/>
+
+    <!-- BOTÓN SALIR DEL JUEGO -->
+    <Button
+        android:id="@+id/btnCerrarJuego"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salir del juego"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#673AB7"/>
 
 </LinearLayout>

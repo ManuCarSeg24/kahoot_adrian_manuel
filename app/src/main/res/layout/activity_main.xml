@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- TEXTO KAHOOT (pantalla principal) -->
+    <!-- TEXTO KAHOOT -->
     <TextView
         android:id="@+id/tituloKahoot"
         android:layout_width="wrap_content"
@@ -31,7 +31,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <!-- 🔧 CONTENEDOR DE FRAGMENTS (VACÍO AL INICIO) -->
+    <!-- CONTENEDOR DE FRAGMENTS -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="0dp"
